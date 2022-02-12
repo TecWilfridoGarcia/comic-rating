@@ -1,4 +1,5 @@
 import MoreInfoProps from "./interface";
+import "./styles.scss";
 
 const MoreIformation: React.FC<MoreInfoProps> = ({
   day,
@@ -6,15 +7,16 @@ const MoreIformation: React.FC<MoreInfoProps> = ({
   transcript,
 }: MoreInfoProps) => {
   return (
-    <div>
-      <p>Description:</p>
-      <p>{transcript}</p>
-      <p>
-        Month:<span>{month}</span>
+    <div className="container-information">
+      <p className="container-title">
+        <strong>Description:</strong>
+        <span>{transcript}</span>
       </p>
-
-      <p>
-        Day:<span>{day}</span>
+      <p className="container-title">
+        <strong>Month:</strong> <span>{month}</span>
+      </p>
+      <p className="container-title">
+        <strong>Day:</strong> <span>{day}</span>
       </p>
     </div>
   );

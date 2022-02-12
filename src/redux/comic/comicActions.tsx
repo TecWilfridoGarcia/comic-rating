@@ -25,14 +25,9 @@ const fetchDataFailure = (error: any) => {
   };
 };
 
-interface fetchDATAProps {
-  idComic: number;
-  mode: string;
-}
 
-export const fetchData = () => {
- // const url = `http://localhost:5000/getData`;
-  const url = "https://xkcd.com/634/info.0.json"
+export const fetchData = (idComic:number) => {
+  const url = `http://localhost:5000/getData/${idComic}`;
   return (dispatch: any) => {
     dispatch(fetchDataRequest());
     axios

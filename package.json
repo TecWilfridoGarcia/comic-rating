@@ -1,4 +1,5 @@
 {
+  "homepage": "https://TecWilfridoGarcia.github.io/comic-rating",
   "name": "ratings",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +15,7 @@
     "http-proxy-middleware": "^2.0.3",
     "micro": "^9.3.4",
     "micro-cors": "^0.1.1",
+    "node-fetch": "^3.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -27,6 +29,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -53,6 +57,7 @@
   "devDependencies": {
     "@types/micro": "^7.3.6",
     "@types/micro-cors": "^0.1.2",
-    "@types/redux-logger": "^3.0.9"
+    "@types/redux-logger": "^3.0.9",
+    "gh-pages": "^3.2.3"
   }
 }

@@ -1,7 +1,7 @@
 const express = require('express');
+const router = express.Router();
 const cors = require('cors');
 const fetch = require('node-fetch');
-
 const PORT = 5000;
 const app = express();
 
@@ -10,19 +10,24 @@ const corsOptions = {
     origin: "http://localhost:3000"
 };
 
-const requestEndpoint = "https://xkcd.com/327/info.0.json";
 
-// This function runs if the http://localhost:5000/getData endpoint
-// is requested with a GET request
-app.get('/getData', cors(corsOptions), async (req, res) => {
-    const fetchOptions = {
+app.get('/getData/:name', cors(corsOptions), async (req, res, next) => {
+ const fetchOptions = {
         method: 'GET'
     }
-    const response = await fetch(requestEndpoint, fetchOptions);
-    const jsonResponse = await response.json();
+try{
+const requestEndpoint = `https://xkcd.com/${req.params.name}/info.0.json`
+const response = await fetch(requestEndpoint , fetchOptions);
+    const jsonResponse = await  response.json();
     res.json(jsonResponse);
+}
+   catch(err){
+   next(err);
+   } 
 });
 
 app.listen(PORT, () => {
     console.log(`Example app listening at http://localhost:${PORT}`);
 });
+
+module.exports = router;

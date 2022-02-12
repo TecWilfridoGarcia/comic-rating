@@ -2,24 +2,34 @@ import { useEffect, useState } from "react";
 import RatingStarProps from "./interface";
 import "./styles.scss";
 
-export const RatingStar = ({ numValue, numRating }: RatingStarProps) => {
+export const RatingStar = ({ numValue }: RatingStarProps) => {
   const [hover, setHover] = useState(0);
-  const [todos, setTodos] = useState<any[]>([]);
   const [rating, setRating] = useState(0);
-  numRating = rating;
+  const [currentValue, setCurrentValue] = useState<string | null>();
+  const [currentValueGet, setCurrentValueGet] = useState<string | null>();
 
   useEffect(() => {
-    const retrievedObject = localStorage.getItem("ratings") || "{}";
-    if (retrievedObject) {
-      setTodos(JSON.parse(retrievedObject));
-      if (todos[0]?.numRating > 0) {
-        setRating(todos[0]?.numRating);
-      } else if (todos[0]?.numRating === 0) {
-        setRating(0);
-      }
-      console.log("todos", todos[0]?.numRating, rating);
+    console.log(currentValue);
+  }, [currentValue]);
+
+  useEffect(() => {
+    if (rating > 0) {
+      setCurrentValue(
+        JSON.stringify(
+          localStorage.setItem(
+            "value",
+            JSON.stringify([{ rating: rating, numValue: numValue }])
+          )
+        )
+      );
     }
-  }, []);
+  }, [rating]);
+
+  const handlerRating = (index: number) => {
+    setRating(index);
+    setCurrentValueGet(currentValue);
+    console.log("currentValueGet: ", currentValueGet, currentValueGet);
+  };
 
   return (
     <div className="star-rating">
@@ -30,13 +40,7 @@ export const RatingStar = ({ numValue, numRating }: RatingStarProps) => {
             type="button"
             key={index}
             className={index <= (hover || rating) ? "on" : "off"}
-            onClick={() => {
-              setRating(index);
-              localStorage.setItem(
-                "ratings",
-                JSON.stringify({ numRating, numValue })
-              );
-            }}
+            onClick={() => handlerRating(index)}
             onMouseEnter={() => setHover(index)}
             onMouseLeave={() => setHover(rating)}
           >

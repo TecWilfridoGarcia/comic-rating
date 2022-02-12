@@ -4,7 +4,8 @@
   "description": "A simple service to return random xkcd comics",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest src/app.test.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -12,6 +13,7 @@
     "mongoose": "^6.2.1",
     "node-fetch": "^2.6.7",
     "nodemon": "^2.0.15",
+    "query-string": "^7.1.1",
     "request": "^2.88.2"
   },
   "engines": {
@@ -24,5 +26,9 @@
   "keywords": [
     "node",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2"
+  }
 }

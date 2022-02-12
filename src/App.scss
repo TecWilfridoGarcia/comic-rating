@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #ccc;
 }
 
 .App {
@@ -13,6 +14,30 @@
   align-items: center;
   font-size: 18px;
   height: 100vh;
-    background: red;
-    padding: 20px;
+  background: #fff;
+  padding: 20px;
+  overflow: auto;
+  .show-button {
+    font-size: 30px;
+    opacity: 0.6;
+    margin: 20px 0;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .container-image {
+    display: flex;
+    align-items: center;
+    background: #fff;
+  }
+  button {
+    svg {
+      background-color: #fff;
+      width: 40px;
+      opacity: 0.6;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }

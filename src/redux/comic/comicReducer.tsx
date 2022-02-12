@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   comic: {},
   error: "",
+  count: 0
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -29,6 +30,7 @@ const reducer = (state = initialState, action: any) => {
         comic: {},
         error: action.payload,
       };
+     
     default:
       return state;
   }
